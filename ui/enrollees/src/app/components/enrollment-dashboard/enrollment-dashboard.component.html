@@ -1,0 +1,46 @@
+
+<div>
+    <div *ngIf="loadStatus === 'SUCCESS'">      
+        <div class="enrollees-list"> 
+        <!-- table -->
+        <div class="enrollees-list-table">
+            <div class="enrollees-body">
+                <div class="enrollees-row mat-h1">
+                    <div class="enrollees-col enrollees-header">Name</div>
+                    <div class="enrollees-col enrollees-header" style="text-align: left;">Date of Birth</div>
+                    <div class="enrollees-col enrollees-header" style="text-align: right;">Status</div>
+                    <div class="enrollees-col enrollees-header">&nbsp;</div>
+                </div>
+                <div class="enrollees-row" *ngFor="let enrollee of enrollees" [ngClass]="{'enrollees-active': enrollee.active, 'enrollees-inactive': !enrollee.active}">
+                    <div class="enrollees-col"> 
+                        <div *ngIf="!enrollee.showEdit">
+                            {{enrollee.name}}
+                            <span class="icon">
+                                <a href="javascript:void(0);" (click)="showEditMode(enrollee);"><img src="/assets/images/edit.png"></a>
+                            </span>
+                        </div>
+                        <div *ngIf="enrollee.showEdit">
+                            <input type="text" class="text-name" [(ngModel)]="enrollee.editedName">
+                            <span class="icon">
+                                <a href="javascript:void(0);" (click)="updateEnrolleeName(enrollee);"><img  src="/assets/images/update.jpeg"></a>
+                            </span>
+                            <span class="icon">
+                                <a href="javascript:void(0);" (click)="enrollee.showEdit =false;"><img  src="/assets/images/cancel.jpg"></a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="enrollees-col" style="text-align: left;">{{enrollee.dateOfBirth | date:'fullDate'}}</div>
+                    <div class="enrollees-col" style="text-align: right;">{{enrollee.status}}</div>
+                    <div class="enrollees-col">
+                        <mat-slide-toggle [(ngModel)]="enrollee.active" [checked]="enrollee.active" (change)="changeEnrolleeStatus($event,enrollee)">                        
+                        </mat-slide-toggle>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="loadStatus === 'FAILURE'" style="margin-top: 70px;">
+        Failed to load!!!
+    </div>
+</div>

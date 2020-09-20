@@ -1,0 +1,35 @@
+
+
+/* DivTable.com */
+.enrollees-list-table{
+	display: table;
+	width: 100%;
+}
+.enrollees-row {
+    display: table-row;
+    .icon{
+        float: left;
+        padding-right: 10px;
+    }
+    .text-name{
+        width: 80%;   
+    }
+}
+.enrollees-col {	
+	display: table-cell;
+    padding: 10px 10px;
+
+}
+.enrollees-body {
+	display: table-row-group;
+}
+.enrollees-active{
+    background-color:#89e69d;
+}
+.enrollees-inactive{
+    background-color:lightgray;
+}
+.enrollees-header{
+    background-color:maroon ;
+    color: #ffffff;
+}
