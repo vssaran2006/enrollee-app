@@ -1,3 +1,3 @@
 export class config{
-    static baseApiUrl = "http://localhost:8081/";
+    static baseApiUrl = "http://localhost:8080/";
 }
